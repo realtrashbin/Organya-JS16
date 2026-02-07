@@ -1,6 +1,6 @@
 # Organya-JS16
 
-Forked from [Organya-js](https://github.com/alula/organya-js) by alula
+**Forked from [Organya-js](https://github.com/alula/organya-js) by alula**
 
 A tiny and accurate player for Organya music files.
 
