@@ -1,12 +1,18 @@
-# organya-js
+# Organya-JS16
 
-A tiny and accurate player for Organya music files.
+**Forked from [Organya-js](https://github.com/alula/organya-js) by alula**
 
-Organya is a chiptune music format created by [Daisuke "Pixel" Amaya](https://twitter.com/oxizn), meant for use in his [Cave Story](https://cavestory.org) game.
+A tiny and accurate player for Organya and Organya16 music files.
 
-See the demo: https://alula.github.io/organya-js/
+**Organya** is a chiptune music format created by [Daisuke "Pixel" Amaya](https://twitter.com/oxizn), meant for use in his [Cave Story](https://cavestory.org) game.
 
-- organya.js - the main player component, it's all you need for playing .org files in browser. (~250 LoC)
-- organya-ui.js - optional component that renders a piano roll on HTML5 canvas. (~150 LoC)
+**Organya16** is an extension of Organya that adds 16 more tracks and was created by Bi_N, meant for making Organya more versatile.
+
+See the demo: https://RealTrashBin.github.io/Organya-JS16/
+
+## About Repository
+
+- Organya.js - the main player component, it's all you need for playing .org files in browser. (~250 LoC)
+- Organya-UI.js - optional component that renders a piano roll on HTML5 canvas. (~150 LoC)
 
 UI graphics were taken from original Organya source code: https://github.com/shbow/organya
