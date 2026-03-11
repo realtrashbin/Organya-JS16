@@ -6,7 +6,7 @@ A tiny and accurate player for Organya and Organya16 music files.
 
 **Organya** is a chiptune music format created by [Daisuke "Pixel" Amaya](https://twitter.com/oxizn), meant for use in his [Cave Story](https://cavestory.org) game.
 
-**Organya16** is an extension of Organya that adds 16 more tracks and was created by Bi_N, meant for making Organya more versatile.
+**Organya16** is an extension of Organya that adds 16 more tracks and was created by me: Bi_N. Made because I thought 8 tracks were too limiting.
 
 See the demo: https://RealTrashBin.github.io/Organya-JS16/
 
