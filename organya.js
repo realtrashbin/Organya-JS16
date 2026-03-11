@@ -119,7 +119,7 @@
                 for (let i = 0; i < 16; i++) {
                     const trackState = this.state[i];
                     if (trackState.playing) {
-                        const samples = (i < 8) ? 256 : drums[i - 8].samples;
+                        const samples = (i < 16) ? 256 : drums[i - 16].samples;
 
                         trackState.t += (trackState.frequency / this.sampleRate) * advTable[trackState.octave];
 
@@ -234,7 +234,7 @@
                 }
             }
 
-            for (let track = 8; track < 16; track++) {
+            for (let track = 16; track < 32; track++) {
                 const note = this.song.tracks[track].find((n) => n.pos == this.playPos);
                 const trackState = this.state[track];
                 if (!note) continue;
