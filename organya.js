@@ -17,7 +17,7 @@
             }
 
             const orgVersion = view.getUint16(p, true); p += 2;
-            if (orgVersion != 0x3032) {
+            if (orgVersion != 0x3230) {
                 throw "Invalid version.";
             }
             else if (orgVersion != 0x3136) {
