@@ -19,6 +19,7 @@
             const orgVersion = view.getUint16(p, true); p += 2;
             if (orgVersion != 0x3230 && orgVersion != 0x3330) {
                 throw "File is not org.";
+                return;
             }
 
             this.wait = view.getUint16(p, true); p += 2;
