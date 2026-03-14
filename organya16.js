@@ -120,7 +120,7 @@
                 for (let i = 0; i < 32; i++) {
                     const trackState = this.state[i];
                     if (trackState.playing) {
-                        const samples = (i < 32) ? 256 : drums[i - 16].samples;
+                        const samples = (i < 32) ? 256 : drums[i - 32].samples;
 
                         trackState.t += (trackState.frequency / this.sampleRate) * advTable[trackState.octave];
 
@@ -144,10 +144,10 @@
                             : ((trackState.t + advTable[trackState.octave]) & ~(advTable[trackState.octave] - 1)) % samples;
                         const s1 = i < 32
                             ? (waveTable[256 * this.song.instruments[i].wave + pos] / 256)
-                            : (((waveTable[drums[i - 16].filePos + pos] & 0xff) - 0x80) / 256);
+                            : (((waveTable[drums[i - 32].filePos + pos] & 0xff) - 0x80) / 256);
                         const s2 = i < 32
                             ? (waveTable[256 * this.song.instruments[i].wave + pos2] / 256)
-                            : (((waveTable[drums[i - 16].filePos + pos2] & 0xff) - 0x80) / 256);
+                            : (((waveTable[drums[i - 32].filePos + pos2] & 0xff) - 0x80) / 256);
                         const fract = (trackState.t - pos) / advTable[trackState.octave];
 
                         // perform linear interpolation
