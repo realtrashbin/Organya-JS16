@@ -19,7 +19,7 @@
 
             this.noteImg = new Image();
             /* this.noteImg.src = "Note.png"; */
-            this.pianoRoll.src = "OrgUI/Junk.png";
+            this.noteImg.src = "OrgUI/Junk.png";
             this.noteImg.addEventListener("load", this.onImageLoad.bind(this));
             this.pianoRoll = new Image();
             /* this.pianoRoll.src = "Music.png"; */
