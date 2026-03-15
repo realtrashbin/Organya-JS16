@@ -120,7 +120,7 @@
                 for (let i = 0; i < 32; i++) {
                     const trackState = this.state[i];
                     if (trackState.playing) {
-                        const samples = (i < 16) ? 256 : drums[i - 16].samples;
+                        const samples = (i < 16) ? 256 : drums[i - 8].samples;
 
                         trackState.t += (trackState.frequency / this.sampleRate) * advTable[trackState.octave];
 
