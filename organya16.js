@@ -274,43 +274,49 @@
     window.initOrganya = async () => {
         if (window.Organya) return;
 
-        console.log("Initializing Organya...");
-        const res = await fetch("wavetable.bin");
+console.log("Initializing Organya...");
+        const res = await fetch("WAVE100.bin");
         const buf = await res.arrayBuffer();
         const view = new DataView(buf);
         waveTable = new Int8Array(buf);
+        // Thanks CaveStory.org!
+        const res_d = await fetch("DrumWaves.bin"); //'_d' for 'drum'. Beyond that, code is unchanged
+        const buf_d = await res_d.arrayBuffer();
+        const view_d = new DataView(buf_d);
+        drumWaveTable = new Int8Array(buf_d);
 
-        for (let i = 256 * 100; i < waveTable.length - 4; i++) {
-            if (view.getUint32(i, true) == 0x45564157) {
+        for (let i = 0; i < drumWaveTable.length - 4; i++) {
+            if (view_d.getUint32(i, true) == 0x45564157) { //"WAVE"
                 i += 4;
-                const riffId = view.getUint32(i, true); i += 4;
-                const riffLen = view.getUint32(i, true); i += 4;
-                if (riffId != 0x20746d66) {
+                const riffId = view_d.getUint32(i, true); i += 4;
+                const riffLen = view_d.getUint32(i, true); i += 4;
+                if (riffId != 0x20746d66) { //"fmt "
                     console.error("Invalid RIFF chunk ID");
                     continue;
                 }
 
                 const startPos = i;
-                const aFormat = view.getUint16(i, true); i += 2;
+                const aFormat = view_d.getUint16(i, true); i += 2;
                 if (aFormat != 1) {
                     console.error("Invalid audio format");
                     i = startPos + riffLen;
                     continue;
                 }
 
-                const channels = view.getUint16(i, true); i += 2;
+                const channels = view_d.getUint16(i, true); i += 2;
                 if (channels != 1) {
                     console.error("Only 1 channel files are supported");
                     i = startPos + riffLen;
                     continue;
                 }
 
-                const samples = view.getUint32(i, true); i += 10; // skip rate + padding
-                const bits = view.getUint16(i, true); i += 2;
-                const wavData = view.getUint32(i, true); i += 4;
-                const wavLen = view.getUint32(i, true); i += 4;
+                const samples = view_d.getUint32(i, true); i += 10; // skip rate + padding
+                const bits = view_d.getUint16(i, true); i += 2;
+                i+=14; //dunno why but there's 14 extraneous bytes in the new drum files at this point
+                const wavData = view_d.getUint32(i, true); i += 4;
+                const wavLen = view_d.getUint32(i, true); i += 4;
 
-                if (wavData != 0x61746164) {
+                if (wavData != 0x61746164) { //"data"
                     i = startPos + riffLen;
                     continue;
                 }
