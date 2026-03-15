@@ -18,13 +18,16 @@
             }
 
             this.noteImg = new Image();
-            this.noteImg.src = "Note.png";
+            /* this.noteImg.src = "Note.png"; */
+            this.pianoRoll.src = "OrgUI/Junk.png";
             this.noteImg.addEventListener("load", this.onImageLoad.bind(this));
             this.pianoRoll = new Image();
-            this.pianoRoll.src = "Music.png";
+            /* this.pianoRoll.src = "Music.png"; */
+            this.pianoRoll.src = "OrgUI/Junk.png";
             this.pianoRoll.addEventListener("load", this.onImageLoad.bind(this));
             this.number = new Image();
-            this.number.src = "Number.png";
+            /* this.number.src = "Number.png"; */
+            this.number.src = "OrgUI/Junk.png";
             this.number.addEventListener("load", this.onImageLoad.bind(this));
         }
 
