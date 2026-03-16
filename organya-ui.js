@@ -141,8 +141,8 @@
                     let noteIdx = Math.max(0, trackRef.findIndex((n) => n.pos >= viewPos) - 1);
                     if (noteIdx === -1) continue;
 
-                    const sprTailX = 32;
-                    const sprTailY = 32 + track * 4;
+                    const sprTailX = 144;
+                    const sprTailY = 24 + track * 4;
 
                     let x = 64;
                     while (x < width) {
