@@ -120,7 +120,7 @@
                 for (let i = 0; i < 32; i++) {
                     const trackState = this.state[i];
                     if (trackState.playing) {
-                        const samples = (i < 16) ? 256 : drums[i - 8].samples;
+                        const samples = (i < 16) ? 256 : drums[i - 16].samples;
 
                         trackState.t += (trackState.frequency / this.sampleRate) * advTable[trackState.octave];
 
@@ -280,7 +280,7 @@ console.log("Initializing Organya...");
         const view = new DataView(buf);
         waveTable = new Int8Array(buf);
         // Thanks CaveStory.org!
-        const res_d = await fetch("wavetable.bin"); //'_d' for 'drum'. Beyond that, code is unchanged
+        const res_d = await fetch("DrumWaves.bin"); //'_d' for 'drum'. Beyond that, code is unchanged
         const buf_d = await res_d.arrayBuffer();
         const view_d = new DataView(buf_d);
         drumWaveTable = new Int8Array(buf_d);
