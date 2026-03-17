@@ -167,8 +167,6 @@
 
                     const sprHeadX = (track & 1) * 16 + 112; //160
                     const sprHeadY = 56 + (track / 2 | 0) * 8;
-                    
-                    const sprHeadY2 = 56 + ((track-7) / 2 | 0) * 8;
 
                     
 
