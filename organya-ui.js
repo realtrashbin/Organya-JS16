@@ -168,7 +168,7 @@
                     const sprHeadX = (track & 1) * 16 + 112; //160
                     const sprHeadY = 56 + (track / 2 | 0) * 8;
                     
-                    const sprHeadY = 56 + ((track-7) / 2 | 0) * 8;
+                    const sprHeadY2 = 56 + ((track-7) / 2 | 0) * 8;
 
                     
 
@@ -182,7 +182,10 @@
 
                         x = noteX;
                         for (let i = 0; i < note.len; i++) x += 16;
-
+                        if (track > 7) {
+                            this.ctx.drawImage(this.noteImg, sprHeadX+48, sprHeadY2, 16, 8, noteX, noteY + 3, 16, 8);
+                            continue;
+                        }
                         this.ctx.drawImage(this.noteImg, sprHeadX, sprHeadY, 16, 8, noteX, noteY + 3, 16, 8);
                     }
                 }
