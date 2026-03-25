@@ -142,7 +142,7 @@
                     if (noteIdx === -1) continue;
 
                     const sprTailX = 32;
-                    const sprTailY = (track * 4)+16;
+                    const sprTailY = (track * 4)+8;
 
                     let x = 64;
                     while (x < width) {
