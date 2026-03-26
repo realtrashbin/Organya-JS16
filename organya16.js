@@ -275,7 +275,7 @@
         if (window.Organya) return;
 
         console.log("Initializing Organya...");
-        const res = await fetch("wavetable.bin");
+        const res = await fetch("newwaves.bin");
         const buf = await res.arrayBuffer();
         const view = new DataView(buf);
         waveTable = new Int8Array(buf);
