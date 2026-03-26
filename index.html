@@ -45,125 +45,21 @@
 <body>
     <div id="toolbar">
         <select id="songs"></select>
-        <button onclick="PlayOrg()"><img src="OrgUI/buttons/Begin.png"></img></button>
-        <button onclick="PlayOrg()"><img src="OrgUI/buttons/BeatLeft.png"></img></button>
-        <button onclick="PlayOrg()"><img src="OrgUI/buttons/StepLeft.png"></img></button>
         <button onclick="playOrg()"><img src="OrgUI/buttons/Play.png"></img></button>
         <button onclick="stopOrg()"><img src="OrgUI/buttons/Pause.png"></img></button>
-        <button onclick="PlayOrg()"><img src="OrgUI/buttons/StepRight.png"></img></button>
-        <button onclick="PlayOrg()"><img src="OrgUI/buttons/BeatRight.png"></img></button>
-        <button onclick="PlayOrg()"><img src="OrgUI/buttons/End.png"></img></button>
     </div>
     <div id="canvas-container">
         <canvas id="org-canvas"></canvas>
     </div>
 
     <!-- increment before each deploy -->
-    <script src="organya.js?cache_bust=1"></script>
     <script src="organya16.js?cache_bust=1"></script>
     <script src="organya-ui.js?cache_bust=1"></script>
     <script>
         (() => {
             const songs = `Bi_N/JavaScript.org16
 Bi_N/Escaping The Prison 2.org16
-Bi_N/Balrog's ThemeV2.org16
-Pixel/Cave Story/Access.org
-Pixel/Cave Story/Balcony.org
-Pixel/Cave Story/Balrog's Theme.org
-Pixel/Cave Story/Break Down.org
-Pixel/Cave Story/Cave Story.org
-Pixel/Cave Story/Cemetery.org
-Pixel/Cave Story/Charge.org
-Pixel/Cave Story/Eyes of Flame.org
-Pixel/Cave Story/Gameover.org
-Pixel/Cave Story/Geothermal.org
-Pixel/Cave Story/Gestation.org
-Pixel/Cave Story/Get Heart Tank!.org
-Pixel/Cave Story/Got Item!.org
-Pixel/Cave Story/Gravity.org
-Pixel/Cave Story/Halloween 2.org
-Pixel/Cave Story/Hero's End.org
-Pixel/Cave Story/Jenka 1.org
-Pixel/Cave Story/Jenka 2.org
-Pixel/Cave Story/Labyrinth Fight.org
-Pixel/Cave Story/Last Battle.org
-Pixel/Cave Story/Last Cave.org
-Pixel/Cave Story/Living Waterway.org
-Pixel/Cave Story/Meltdown 2.org
-Pixel/Cave Story/Meltdown.org
-Pixel/Cave Story/Mimiga Town.org
-Pixel/Cave Story/Mischievous Robot.org
-Pixel/Cave Story/Moonsong.org
-Pixel/Cave Story/On to Grasstown.org
-Pixel/Cave Story/Oppression.org
-Pixel/Cave Story/People of the Root.org
-Pixel/Cave Story/Pier Walk.org
-Pixel/Cave Story/Plant.org
-Pixel/Cave Story/Pulse.org
-Pixel/Cave Story/Quiet.org
-Pixel/Cave Story/Run!.org
-Pixel/Cave Story/Running Hell.org
-Pixel/Cave Story/Safety.org
-Pixel/Cave Story/Scorching Back.org
-Pixel/Cave Story/Seal Chamber.org
-Pixel/Cave Story/Snoopy Cake (Rockorg).org
-Pixel/Cave Story/The Way Back Home.org
-Pixel/Cave Story/Torokos Theme.org
-Pixel/Cave Story/Tyrant.org
-Pixel/Cave Story/Victory!.org
-Pixel/Cave Story/White.org
-Pixel/Cave Story/Wind Fortress.org
-Pixel/Cave Story/Zombie.org
-Pixel/Cave Story Beta/Cave Story Beta 2001-09-30.org
-Pixel/Cave Story Beta/Cave Story Beta 2001-12-09.org
-Pixel/Cave Story Beta/Cave Story Beta 2004-12-07.org
-Pixel/Cave Story Beta/Cemetery Beta 2002-12-17.org
-Pixel/Cave Story Beta/Eyes of Flame Beta 2002-10-24.org
-Pixel/Cave Story Beta/Eyes of Flame Beta 2002-12-17.org
-Pixel/Cave Story Beta/Eyes of Flame Beta 2004-12-14.org
-Pixel/Cave Story Beta/Eyes of Flame Beta 2004-12-15.org
-Pixel/Cave Story Beta/Gestation Beta 2001-09-30.org
-Pixel/Cave Story Beta/Gravity Beta 2001-09-30.org
-Pixel/Cave Story Beta/Gravity Beta 2002-01-20.org
-Pixel/Cave Story Beta/Gravity Beta 2002-07-20.org
-Pixel/Cave Story Beta/Hero's End Beta 2001-09-30.org
-Pixel/Cave Story Beta/Hero's End Beta 2001-12-09.org
-Pixel/Cave Story Beta/Hero's End Beta 2002-01-20.org
-Pixel/Cave Story Beta/Last Battle Beta.org
-Pixel/Cave Story Beta/Living Waterway Beta 2001-09-30.org
-Pixel/Cave Story Beta/Living Waterway Beta 2001-12-09.org
-Pixel/Cave Story Beta/Living Waterway Beta 2002-01-20.org
-Pixel/Cave Story Beta/Meltdown Beta 2001-09-30.org
-Pixel/Cave Story Beta/Meltdown Beta 2001-12-09.org
-Pixel/Cave Story Beta/Mimiga Town Beta 2003-02-10.org
-Pixel/Cave Story Beta/Mischievous Robot Beta 2002-06-07.org
-Pixel/Cave Story Beta/Mischievous Robot Beta 2002-07-01.org
-Pixel/Cave Story Beta/Moonsong Beta 2001-12-09.org
-Pixel/Cave Story Beta/Moonsong Beta 2002-01-20.org
-Pixel/Cave Story Beta/Oppression Beta 2001-12-09.org
-Pixel/Cave Story Beta/Oppression Beta 2002-02-28.org
-Pixel/Cave Story Beta/Pier Walk Beta 2001-09-30.org
-Pixel/Cave Story Beta/Plant Beta 2001-09-30.org
-Pixel/Cave Story Beta/Plant Beta 2001-12-09.org
-Pixel/Cave Story Beta/Plant Beta 2002-12-17.org
-Pixel/Cave Story Beta/Pulse Beta 2003-02-10.org
-Pixel/Cave Story Beta/Quiet Beta 2004-02-19.org
-Pixel/Cave Story Beta/Safety Beta 2001-09-30.org
-Pixel/Cave Story Beta/Safety Beta 2001-12-09.org
-Pixel/Cave Story Beta/Safety Beta 2002-06-07.org
-Pixel/Cave Story Beta/Safety Beta 2002-07-01.org
-Pixel/Cave Story Beta/Safety Beta 2002-07-20.org
-Pixel/Cave Story Beta/White Beta 2002-01-20.org
-Pixel/Cave Story Beta/White Beta 2002-02-14.org
-Pixel/Cave Story Beta/White Beta 2002-02-28.org
-Pixel/Cave Story Beta/Wind Fortress Beta 2002-07-05.org
-Pixel/Cave Story Beta/Wind Fortress Beta 2002-07-09.org
-Pixel/Cave Story Beta/Wind Fortress Beta 2002-07-20.org
-Pixel/Cave Story Beta/Wind Fortress Beta 2002-10-24.org
-makkoi/maimai.org
-nurv/happy00.org
-Rxo/snowfalling.org
-Rxo/town0.org`.split("\n").sort();
+Bi_N/Balrog's ThemeV2.org16`.split("\n").sort();
 
             const songListEl = document.getElementById("songs");
             for (let song of songs) {
