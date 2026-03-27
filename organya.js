@@ -17,8 +17,8 @@
             }
 
             const orgVersion = view.getUint16(p, true); p += 2;
-            if (orgVersion != 0x3230) {
-                throw "Invalid version.";
+            if (orgVersion != 0x3631) {
+                throw "Not ORG16.";
             }
 
             this.wait = view.getUint16(p, true); p += 2;
@@ -28,7 +28,7 @@
 
             this.instruments = [];
 
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 32; i++) {
                 const freq = view.getInt16(p, true); p += 2;
                 const wave = view.getUint8(p, true); p++;
                 const pipi = view.getUint8(p, true); p++;
@@ -38,7 +38,7 @@
             }
 
             this.tracks = [];
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 32; i++) {
                 const track = [];
                 track.length = this.instruments[i].notes;
 
@@ -119,7 +119,7 @@
                 for (let i = 0; i < 16; i++) {
                     const trackState = this.state[i];
                     if (trackState.playing) {
-                        const samples = (i < 8) ? 256 : drums[i - 8].samples;
+                        const samples = (i < 16) ? 256 : drums[i - 8].samples;
 
                         trackState.t += (trackState.frequency / this.sampleRate) * advTable[trackState.octave];
 
@@ -141,12 +141,12 @@
                         let pos2 = !this.looping && t == samples ?
                             pos
                             : ((trackState.t + advTable[trackState.octave]) & ~(advTable[trackState.octave] - 1)) % samples;
-                        const s1 = i < 8
+                        const s1 = i < 16
                             ? (waveTable[256 * this.song.instruments[i].wave + pos] / 256)
                             : (((waveTable[drums[i - 8].filePos + pos] & 0xff) - 0x80) / 256);
-                        const s2 = i < 8
+                        const s2 = i < 16
                             ? (waveTable[256 * this.song.instruments[i].wave + pos2] / 256)
-                            : (((waveTable[drums[i - 8].filePos + pos2] & 0xff) - 0x80) / 256);
+                            : (((waveTable[drums[i - 16].filePos + pos2] & 0xff) - 0x80) / 256);
                         const fract = (trackState.t - pos) / advTable[trackState.octave];
 
                         // perform linear interpolation
@@ -182,7 +182,7 @@
         update() {
             if (this.onUpdate) this.onUpdate(this);
 
-            for (let track = 0; track < 8; track++) {
+            for (let track = 0; track < 16; track++) {
                 const note = this.song.tracks[track].find((n) => n.pos == this.playPos); // TODO: this feels inefficient
                 const trackState = this.state[track];
                 if (note) {
@@ -234,7 +234,7 @@
                 }
             }
 
-            for (let track = 8; track < 16; track++) {
+            for (let track = 16; track < 32; track++) {
                 const note = this.song.tracks[track].find((n) => n.pos == this.playPos);
                 const trackState = this.state[track];
                 if (!note) continue;
